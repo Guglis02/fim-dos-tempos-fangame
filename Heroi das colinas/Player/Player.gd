@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends KinematicBody2D;
 
 const ACCELERATION = 500;
 const MAX_SPEED = 80;
@@ -21,8 +21,7 @@ onready var animationState = animationTree.get("parameters/playback");
 func _ready():
 	animationTree.active = true;
 
-# 
-func _physics_process(delta):
+func _process(delta):
 	match state:
 		MOVE:
 			move_state(delta);
