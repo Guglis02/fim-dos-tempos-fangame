@@ -1,9 +1,10 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Player/PlayerFurry.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Overlaps/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/SwordHitbox.gd" type="Script" id=4]
+[ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.62157
@@ -602,11 +603,14 @@ height = 12.0
 collision_layer = 2
 script = ExtResource( 2 )
 
+[node name="ShadowSprite" type="Sprite" parent="."]
+position = Vector2( 0, 3 )
+texture = ExtResource( 5 )
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -9.52443 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
@@ -635,7 +639,7 @@ tree_root = SubResource( 44 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 45 )
 parameters/Attack/blend_position = Vector2( -0.471037, 0.0258621 )
-parameters/Idle/blend_position = Vector2( 0, 0 )
+parameters/Idle/blend_position = Vector2( 0.0640244, -0.017341 )
 parameters/Roll/blend_position = Vector2( 0.928354, 0.0145119 )
 parameters/Run/blend_position = Vector2( 0, 0 )
 
