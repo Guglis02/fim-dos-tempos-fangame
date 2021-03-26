@@ -967,13 +967,13 @@ position = Vector2( 277.798, 64.0773 )
 position = Vector2( 208.759, 2.24612 )
 
 [node name="Grass11" parent="YSort/Grass" instance=ExtResource( 8 )]
-position = Vector2( 14.0312, 170.847 )
+position = Vector2( 9.57167, 172.482 )
 
 [node name="Grass12" parent="YSort/Grass" instance=ExtResource( 8 )]
-position = Vector2( 14.6116, 153.419 )
+position = Vector2( 10.0034, 155.351 )
 
 [node name="Grass13" parent="YSort/Grass" instance=ExtResource( 8 )]
-position = Vector2( -3.97857, 153.227 )
+position = Vector2( -9.6273, 155.159 )
 
 [node name="Grass14" parent="YSort/Grass" instance=ExtResource( 8 )]
 position = Vector2( 224.191, 146.662 )

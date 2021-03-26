@@ -1,6 +1,6 @@
 [gd_scene load_steps=52 format=2]
 
-[ext_resource path="res://Player/PlayerFurry.png" type="Texture" id=1]
+[ext_resource path="res://Player/PlayerFurry Recolor.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Overlaps/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/SwordHitbox.gd" type="Script" id=4]
@@ -638,10 +638,10 @@ anims/RunUp = SubResource( 17 )
 tree_root = SubResource( 44 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 45 )
-parameters/Attack/blend_position = Vector2( -0.471037, 0.0258621 )
-parameters/Idle/blend_position = Vector2( 0.0640244, -0.017341 )
-parameters/Roll/blend_position = Vector2( 0.928354, 0.0145119 )
-parameters/Run/blend_position = Vector2( 0, 0 )
+parameters/Attack/blend_position = Vector2( 0, 1 )
+parameters/Idle/blend_position = Vector2( 0, 1 )
+parameters/Roll/blend_position = Vector2( 0, 1 )
+parameters/Run/blend_position = Vector2( 0, 1 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
 position = Vector2( 0, -4 )
