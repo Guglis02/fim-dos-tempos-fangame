@@ -24,6 +24,8 @@ onready var sprite = $AnimatedSprite;
 onready var stats = $Stats;
 onready var playerDetectionZone = $PlayerDetectionZone;
 onready var hurtbox = $Hurtbox;
+onready var softCollision = $SoftCollision;
+onready var wanderController = $WanderController;
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta);
@@ -33,6 +35,7 @@ func _physics_process(delta):
 		IDLE:
 			velocity = velocity.move_toward(Vector2.ZERO, 200 * delta);
 			seek_player();
+			if wanderController.get_time_left() == 0;
 			
 		WANDER:
 			pass;
@@ -46,11 +49,17 @@ func _physics_process(delta):
 				state = IDLE;
 			sprite.flip_h = velocity.x < 0;
 	
+	if softCollision.is_colliding():
+		velocity += softCollision.get_push_vector() * delta * 400;
 	velocity = move_and_slide(velocity);
 
 func seek_player():
 	if playerDetectionZone.can_see_player():
 		state = CHASE;
+
+func pick_random_state(state_list):
+	state_list.shuffle();
+	return state_list.pop_front();
 
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage;
