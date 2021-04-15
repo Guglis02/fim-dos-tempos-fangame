@@ -1,5 +1,7 @@
 extends KinematicBody2D;
 
+const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn");
+
 export var ACCELERATION = 500;
 export var MAX_SPEED = 80;
 export var ROLL_SPEED = 110;
@@ -21,6 +23,7 @@ onready var animationTree = $AnimationTree;
 onready var animationState = animationTree.get("parameters/playback");
 onready var swordHitbox = $HitboxPivot/SwordHitbox;
 onready var hurtbox = $Hurtbox;
+onready var blinkAnimationPlayer = $BlinkAnimationPlayer;
 
 # Função chamada quando o jogo está carregado
 func _ready():
@@ -33,9 +36,9 @@ func _physics_process(delta):
 		MOVE:
 			move_state(delta);
 		ROLL:
-			roll_state(delta);
+			roll_state();
 		ATTACK:
-			attack_state(delta);	
+			attack_state();	
 
 # Função relacionada à lógica e animação do movimento do personagem
 func move_state(delta):
@@ -68,12 +71,12 @@ func move_state(delta):
 		state = ATTACK;
 
 #	Função relacionada a lógica e animações de quando o jogador rola
-func roll_state(_delta):
+func roll_state():
 	velocity = roll_vector * ROLL_SPEED;
 	animationState.travel("Roll");
 	move();
 	
-func attack_state(_delta):
+func attack_state():
 	velocity = Vector2.ZERO;
 	animationState.travel("Attack");
 
@@ -88,8 +91,18 @@ func attack_animation_finished():
 	state = MOVE;
 
 
-func _on_Hurtbox_area_entered(_area):
+func _on_Hurtbox_area_entered(area):
 	if state != ROLL:
-		stats.health -= 1;
+		stats.health -= area.damage;
 		hurtbox.start_invincibility(0.5);
 		hurtbox.create_hit_effect();
+		var playerHurtSound = PlayerHurtSound.instance();
+		get_tree().current_scene.add_child(playerHurtSound);
+		
+func _on_Hurtbox_invincibility_started():
+	blinkAnimationPlayer.play("Start");
+
+
+func _on_Hurtbox_invincibility_ended():
+	blinkAnimationPlayer.play("Stop");
+	
