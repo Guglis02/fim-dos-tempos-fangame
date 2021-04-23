@@ -6,6 +6,7 @@ export var ACCELERATION = 500;
 export var MAX_SPEED = 80;
 export var ROLL_SPEED = 110;
 export var FRICTION = 500;
+export(NodePath) var RESPAWN_POINT;
 
 #signal interact_with;
 
@@ -26,10 +27,11 @@ onready var animationState = animationTree.get("parameters/playback");
 onready var swordHitbox = $HitboxPivot/SwordHitbox;
 onready var hurtbox = $Hurtbox;
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer;
+onready var respawnPoint = get_node(RESPAWN_POINT);
 
 # Função chamada quando o jogo está carregado
 func _ready():
-	stats.connect("no_health", self, "queue_free");
+	stats.connect("no_health", self, "die");
 	animationTree.active = true;
 	swordHitbox.knockback_vector = roll_vector;
 
@@ -91,6 +93,10 @@ func roll_animation_finished():
 
 func attack_animation_finished():
 	state = MOVE;
+
+func die():
+	set_global_position(Vector2(respawnPoint.position.x, respawnPoint.position.y));
+	stats.health = stats.max_health;
 
 func _on_Hurtbox_area_entered(area):
 	if state != ROLL:
