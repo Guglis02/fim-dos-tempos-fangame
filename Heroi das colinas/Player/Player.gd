@@ -7,6 +7,8 @@ export var MAX_SPEED = 80;
 export var ROLL_SPEED = 110;
 export var FRICTION = 500;
 
+#signal interact_with;
+
 enum {
 	MOVE,
 	ROLL,
@@ -89,7 +91,6 @@ func roll_animation_finished():
 
 func attack_animation_finished():
 	state = MOVE;
-
 
 func _on_Hurtbox_area_entered(area):
 	if state != ROLL:
