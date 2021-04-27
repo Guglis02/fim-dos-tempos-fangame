@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Music and Sounds/Swipe.wav" type="AudioStream" id=7]
 [ext_resource path="res://Music and Sounds/Evade.wav" type="AudioStream" id=8]
 [ext_resource path="res://white_shader.shader" type="Shader" id=9]
+[ext_resource path="res://Interactions/ChatIcon.png" type="Texture" id=10]
+[ext_resource path="res://Interactions/InteractionComponentUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Interactions/InteractionComponent.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 9 )
@@ -823,9 +826,21 @@ stream = ExtResource( 8 )
 anims/Start = SubResource( 49 )
 anims/Stop = SubResource( 50 )
 
+[node name="InteractionComponent" parent="." instance=ExtResource( 12 )]
+collision_mask = 64
+interaction_parent = NodePath("..")
+
+[node name="InteractionComponentUI" parent="." instance=ExtResource( 11 )]
+interaction_component_nodepath = NodePath("../InteractionComponent")
+interaction_texture_nodepath = NodePath("HBoxContainer/TextureRect")
+interaction_text_nodepath = NodePath("HBoxContainer/RichTextLabel")
+interaction_default_texture = ExtResource( 10 )
+interaction_default_text = "Chat"
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
 
 [editable path="HitboxPivot/SwordHitbox"]
 [editable path="Hurtbox"]
+[editable path="InteractionComponentUI"]

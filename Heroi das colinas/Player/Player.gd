@@ -1,4 +1,5 @@
 extends KinematicBody2D;
+class_name Player
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn");
 
@@ -8,7 +9,7 @@ export var ROLL_SPEED = 110;
 export var FRICTION = 500;
 export(NodePath) var RESPAWN_POINT;
 
-#signal interact_with;
+signal die;
 
 enum {
 	MOVE,
@@ -95,6 +96,7 @@ func attack_animation_finished():
 	state = MOVE;
 
 func die():
+	emit_signal("die");
 	set_global_position(Vector2(respawnPoint.position.x, respawnPoint.position.y));
 	stats.health = stats.max_health;
 
