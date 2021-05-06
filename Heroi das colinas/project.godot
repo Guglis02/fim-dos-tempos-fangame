@@ -33,7 +33,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Heroi das colinas"
-run/main_scene="res://World.tscn"
+run/main_scene="res://UI/TitleScreen.tscn"
+config/icon="res://Icon.png"
 
 [autoload]
 

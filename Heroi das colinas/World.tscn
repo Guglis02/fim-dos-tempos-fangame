@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -30,7 +30,7 @@
 [ext_resource path="res://World/Cave/StoneBackground.png" type="Texture" id=28]
 [ext_resource path="res://NPCs/Ayla.tscn" type="PackedScene" id=29]
 [ext_resource path="res://World/Buildings/AylaCorporation.tscn" type="PackedScene" id=30]
-[ext_resource path="res://UI/Pause.gd" type="Script" id=31]
+[ext_resource path="res://NPCs/Guard.gd" type="Script" id=31]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=32]
 [ext_resource path="res://NPCs/Drikka.tscn" type="PackedScene" id=33]
 [ext_resource path="res://NPCs/Ledd.tscn" type="PackedScene" id=34]
@@ -40,6 +40,8 @@
 [ext_resource path="res://NPCs/Belinda.tscn" type="PackedScene" id=38]
 [ext_resource path="res://NPCs/Ripp.png" type="Texture" id=39]
 [ext_resource path="res://NPCs/IgnisPhone.png" type="Texture" id=40]
+[ext_resource path="res://World/Buildings/Furniture/Shelf1.tscn" type="PackedScene" id=41]
+[ext_resource path="res://World/Buildings/Furniture/Shelf2.tscn" type="PackedScene" id=42]
 
 [sub_resource type="TileSet" id=1]
 0/name = "GrassBackground.png 0"
@@ -178,8 +180,8 @@ points = PoolVector2Array( 10.4923, 0, 10.268, 19.4565, 12.0625, 21.8118, 12.062
 0/region = Rect2( 0, 0, 128, 64 )
 0/tile_mode = 1
 0/autotile/bitmask_mode = 1
-0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 176, Vector2( 0, 1 ), 50, Vector2( 1, 1 ), 56, Vector2( 2, 1 ), 58, Vector2( 3, 0 ), 184, Vector2( 3, 1 ), 26, Vector2( 4, 1 ), 146, Vector2( 5, 0 ), 152, Vector2( 5, 1 ), 144, Vector2( 6, 0 ), 48, Vector2( 6, 1 ), 18, Vector2( 7, 0 ), 24 ]
-0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 176, Vector2( 0, 1 ), 50, Vector2( 1, 1 ), 56, Vector2( 2, 1 ), 58, Vector2( 3, 0 ), 184, Vector2( 3, 1 ), 26, Vector2( 4, 0 ), 56, Vector2( 4, 1 ), 146, Vector2( 5, 0 ), 152, Vector2( 5, 1 ), 144, Vector2( 6, 0 ), 48, Vector2( 6, 1 ), 18, Vector2( 7, 0 ), 24 ]
+0/autotile/icon_coordinate = Vector2( 4, 0 )
 0/autotile/tile_size = Vector2( 16, 32 )
 0/autotile/spacing = 0
 0/autotile/occluder_map = [  ]
@@ -416,16 +418,8 @@ margin_top = 5.99139
 margin_right = 69.9317
 margin_bottom = 16.9914
 
-[node name="Pause" type="Control" parent="CanvasLayer"]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 32 )]
 pause_mode = 2
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 31 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PauseMenu" parent="CanvasLayer/Pause" instance=ExtResource( 32 )]
 
 [node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 35 )]
 margin_left = 27.636
@@ -466,7 +460,7 @@ position = Vector2( 397.964, -168 )
 [node name="YSort" type="YSort" parent="Map"]
 
 [node name="Player" parent="Map/YSort" instance=ExtResource( 2 )]
-position = Vector2( 151.661, 84.6113 )
+position = Vector2( 392.805, -164.837 )
 RESPAWN_POINT = NodePath("../../PlayerRespawnPoint")
 
 [node name="RemoteCamera" type="RemoteTransform2D" parent="Map/YSort/Player"]
@@ -600,7 +594,7 @@ position = Vector2( 304.625, 290 )
 
 [node name="Guard" parent="Map/YSort/NPCs" instance=ExtResource( 9 )]
 position = Vector2( 216.518, -80 )
-script = ExtResource( 37 )
+script = ExtResource( 31 )
 dialogue_ui = NodePath("../../../../CanvasLayer/Dialogue")
 
 [node name="DialoguePlayer" parent="Map/YSort/NPCs/Guard" instance=ExtResource( 36 )]
@@ -694,11 +688,17 @@ position = Vector2( 288, -256 )
 [node name="TableH3" parent="Map/YSort/Furniture" instance=ExtResource( 18 )]
 position = Vector2( 279.759, -128 )
 
+[node name="TableH4" parent="Map/YSort/Furniture" instance=ExtResource( 18 )]
+position = Vector2( -48.1801, -124.827 )
+
 [node name="TableRound" parent="Map/YSort/Furniture" instance=ExtResource( 19 )]
 position = Vector2( 384, -184 )
 
 [node name="TableRound2" parent="Map/YSort/Furniture" instance=ExtResource( 19 )]
 position = Vector2( 287, -192 )
+
+[node name="TableRound3" parent="Map/YSort/Furniture" instance=ExtResource( 19 )]
+position = Vector2( -67.1801, -178.381 )
 
 [node name="StoolCircle" parent="Map/YSort/Furniture" instance=ExtResource( 21 )]
 position = Vector2( 304.625, -176 )
@@ -730,6 +730,9 @@ position = Vector2( 392, -160 )
 [node name="StoolSquare2" parent="Map/YSort/Furniture" instance=ExtResource( 22 )]
 position = Vector2( 304, -144 )
 
+[node name="StoolSquare5" parent="Map/YSort/Furniture" instance=ExtResource( 22 )]
+position = Vector2( -48.8239, -136 )
+
 [node name="StoolSquare3" parent="Map/YSort/Furniture" instance=ExtResource( 22 )]
 position = Vector2( 276.981, -239.188 )
 
@@ -738,6 +741,18 @@ position = Vector2( 240, -128 )
 
 [node name="Stairs" parent="Map/YSort/Furniture" instance=ExtResource( 6 )]
 position = Vector2( 388.792, -132.827 )
+
+[node name="Shelf1" parent="Map/YSort/Furniture" instance=ExtResource( 41 )]
+position = Vector2( -40.7995, -234.932 )
+
+[node name="Shelf3" parent="Map/YSort/Furniture" instance=ExtResource( 41 )]
+position = Vector2( -56.8239, -234.932 )
+
+[node name="Shelf2" parent="Map/YSort/Furniture" instance=ExtResource( 42 )]
+position = Vector2( -25.1503, -234.932 )
+
+[node name="Shelf4" parent="Map/YSort/Furniture" instance=ExtResource( 42 )]
+position = Vector2( -71.8991, -234.932 )
 
 [node name="Enemies" type="YSort" parent="Map/YSort"]
 
@@ -769,6 +784,18 @@ position = Vector2( -32, 216 )
 
 [node name="Tree12" parent="Map/YSort/Trees" instance=ExtResource( 13 )]
 position = Vector2( -111.751, 8 )
+
+[node name="Tree19" parent="Map/YSort/Trees" instance=ExtResource( 13 )]
+position = Vector2( -8.24125, 0 )
+
+[node name="Tree20" parent="Map/YSort/Trees" instance=ExtResource( 13 )]
+position = Vector2( 448, 126.893 )
+
+[node name="Tree21" parent="Map/YSort/Trees" instance=ExtResource( 13 )]
+position = Vector2( 139.761, 374 )
+
+[node name="Tree22" parent="Map/YSort/Trees" instance=ExtResource( 13 )]
+position = Vector2( -187.855, 64.5782 )
 
 [node name="Tree13" parent="Map/YSort/Trees" instance=ExtResource( 13 )]
 position = Vector2( 448, 298 )
@@ -833,7 +860,7 @@ cell_size = Vector2( 16, 32 )
 cell_tile_origin = 1
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -589810, 0, 0, -589809, 0, 4, -589808, 0, 4, -589807, 0, 4, -589806, 0, 4, -589805, 0, 4, -589804, 0, 4, -589803, 0, 4, -589802, 0, 4, -589801, 0, 4, -589800, 0, 4, -589799, 0, 5, -458758, 0, 0, -458757, 0, 65537, -458756, 0, 65537, -458755, 0, 65537, -458754, 0, 65537, -458753, 0, 5, -524274, 0, 65542, -524263, 0, 65540, -393222, 0, 65540, -393217, 0, 65542, -458727, 0, 65540, -327686, 0, 65540, -393202, 0, 65541, -393196, 0, 65541, -393191, 0, 65540, -262150, 0, 65540, -262145, 0, 65541, -327666, 0, 65540, -327660, 0, 65540, -327655, 0, 65540, -196614, 0, 65536, -196613, 0, 65537, -196612, 0, 65537, -196611, 0, 65537, -196610, 0, 65537, -196609, 0, 65539, -262130, 0, 65536, -262129, 0, 65537, -262128, 0, 65537, -262127, 0, 65537, -262126, 0, 65537, -262125, 0, 65537, -262124, 0, 65538, -262123, 0, 65537, -262122, 0, 65537, -262121, 0, 65537, -262120, 0, 65537, -262119, 0, 65539 )
+tile_data = PoolIntArray( -589810, 0, 0, -589809, 0, 4, -589808, 0, 4, -589807, 0, 4, -589806, 0, 4, -589805, 0, 4, -589804, 0, 4, -589803, 0, 4, -589802, 0, 4, -589801, 0, 4, -589800, 0, 4, -589799, 0, 5, -458758, 0, 0, -458757, 0, 4, -458756, 0, 4, -458755, 0, 4, -458754, 0, 4, -458753, 0, 5, -524274, 0, 65542, -524263, 0, 65540, -393222, 0, 65540, -393217, 0, 65542, -458727, 0, 65540, -327686, 0, 65540, -393202, 0, 65541, -393196, 0, 65541, -393191, 0, 65540, -262150, 0, 65540, -262145, 0, 65541, -327666, 0, 65540, -327660, 0, 65540, -327655, 0, 65540, -196614, 0, 65536, -196613, 0, 65537, -196612, 0, 65537, -196611, 0, 65537, -196610, 0, 65537, -196609, 0, 65539, -262130, 0, 65536, -262129, 0, 65537, -262128, 0, 65537, -262127, 0, 65537, -262126, 0, 65537, -262125, 0, 65537, -262124, 0, 65538, -262123, 0, 65537, -262122, 0, 65537, -262121, 0, 65537, -262120, 0, 65537, -262119, 0, 65539 )
 
 [node name="NaturalWallsTilemap" type="TileMap" parent="Map/YSort"]
 position = Vector2( 0.180058, 0 )
@@ -898,7 +925,7 @@ position = Vector2( 292.283, -170.381 )
 texture = ExtResource( 23 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 14 )]
-position = Vector2( 151.661, 84.6113 )
+position = Vector2( 392.805, -164.837 )
 smoothing_speed = 15.0
 
 [node name="TopLeft" parent="Camera2D/Limits" index="0"]
@@ -913,11 +940,9 @@ position = Vector2( 706, 63.1933 )
 [node name="CaveBottonRight" parent="Camera2D/Limits" index="3"]
 position = Vector2( 1152, 384 )
 
-[connection signal="pressed" from="CanvasLayer/Pause/PauseMenu/TextureRect/TextureRect/TextureButton" to="CanvasLayer/Pause" method="_on_TextureButton_pressed"]
 [connection signal="die" from="Map/YSort/Player" to="Camera2D" method="_on_Player_die"]
 [connection signal="body_entered" from="Map/CaveEntrace/CaveExit" to="Camera2D" method="_on_CaveExit_body_entered"]
 [connection signal="body_entered" from="Map/CaveEntrace/CaveIn" to="Camera2D" method="_on_CaveIn_body_entered"]
 
-[editable path="CanvasLayer/Pause/PauseMenu"]
 [editable path="Map/CaveEntrace"]
 [editable path="Camera2D"]
