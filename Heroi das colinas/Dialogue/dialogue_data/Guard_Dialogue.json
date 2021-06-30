@@ -1,0 +1,5 @@
+{
+    "001" : {"name":"Guarda", "expression": "neutral", "text": "Boa tarde, aventureiro, este é o forte cabeça-de-martelo..."},
+    "002" : {"name":"Guarda", "expression": "neutral", "text": "um entreposto para os poucos viajantes das colinas..."},
+    "003" : {"name":"Guarda", "expression": "neutral", "text": "Fique à vontade, só não vá causar confusão."}
+}

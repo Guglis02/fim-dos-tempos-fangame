@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Shadows/LargeShadow.png" type="Texture" id=1]
+[ext_resource path="res://World/Buildings/AylaCorporation.png" type="Texture" id=2]
+
+[node name="AylaCorporation" type="StaticBody2D"]
+
+[node name="ShadowSprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -20 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -9.85636, 1.73432, -4.89322, 4.73094, 2.73879, 4.8714, 6.01633, 2.5303, 11.3541, 2.06208, 13.461, 0.79788, 13.5079, -1.87098, 9.7621, -2.66696, 6.48456, -1.87098, 2.5515, -4.63348, -4.56546, -4.82077, -9.85636, -2.94789 )

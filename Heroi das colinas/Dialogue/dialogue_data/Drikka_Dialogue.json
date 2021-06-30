@@ -1,0 +1,8 @@
+{
+    "001" : {"name":"Drikka", "expression": "neutral", "text": "Olá, eu sou a Drikka.."},
+    "002" : {"name":"Drikka", "expression": "neutral", "text": "Eu e meus amigos Ledd e Ripp estavamos andando pelo reino de Yuden e acabamos aqui nas colinas..."},
+    "003" : {"name":"Drikka", "expression": "neutral", "text": "O problema é que o caminho colina acima é perigoso, e meu colega Ripp tem um requisíto para executar suas magias..."},
+    "004" : {"name":"Drikka", "expression": "neutral", "text": "Ledd prontamente entrou nesta caverna ao meu lado, para coletar pelos de alguns morcegos, mas ele ainda não voltou."},
+    "005" : {"name":"Drikka", "expression": "neutral", "text": "Eu iria atrás dele, mas Ripp foi resolver assuntos pessoais, e preciso ficar aqui para sinalizar a entrada da caverna..."},
+    "006" : {"name":"Drikka", "expression": "neutral", "text": "Você poderia entrar na caverna e ver se está tudo bem com Ledd?"}
+}    

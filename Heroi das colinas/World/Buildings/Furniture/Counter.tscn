@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://World/Buildings/Furniture/Counter.png" type="Texture" id=1]
+
+[node name="Belinda" type="StaticBody2D"]
+collision_mask = 19
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 24, -17.5085 )
+scale = Vector2( 1, 0.953587 )
+build_mode = 1
+polygon = PoolVector2Array( 4.91584, -18.246, 4.897, 29.175, -41.8649, 29.2731, -49.3176, 24.9626, -49.375, 0.387972, -40.5, 0.262972, -40.1129, 14.5899, -37.5132, 16.3877, -36.625, 16.591, -23.1875, 16.46, -8.00218, 15.8309, -6.25, 13.763, -6.375, -18.237 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+texture = ExtResource( 1 )
+offset = Vector2( -0.0270996, -5.0992 )

@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://UI/PauseScreen.png" type="Texture" id=1]
+[ext_resource path="res://UI/PauseButton1.png" type="Texture" id=2]
+[ext_resource path="res://UI/PauseButton2.png" type="Texture" id=3]
+[ext_resource path="res://UI/PauseButton3.png" type="Texture" id=4]
+[ext_resource path="res://UI/OptionsScreen.png" type="Texture" id=5]
+[ext_resource path="res://UI/Pause.gd" type="Script" id=6]
+[ext_resource path="res://UI/Buttons/ReturnButton.png" type="Texture" id=7]
+[ext_resource path="res://UI/Buttons/ReturnButtonPressed.png" type="Texture" id=8]
+[ext_resource path="res://UI/Buttons/OptionsButtonPressed.png" type="Texture" id=9]
+[ext_resource path="res://UI/Buttons/ExitButtonPressed.png" type="Texture" id=10]
+[ext_resource path="res://UI/Buttons/PlayButtonPressed.png" type="Texture" id=11]
+
+[node name="PauseMenu" type="Control"]
+margin_left = 32.0
+margin_right = 288.0
+margin_bottom = 168.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseScreen" type="TextureRect" parent="."]
+margin_right = 256.0
+margin_bottom = 128.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnpauseButton" type="TextureButton" parent="PauseScreen"]
+margin_left = 80.0
+margin_top = 64.0
+margin_right = 112.0
+margin_bottom = 96.0
+action_mode = 0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="TextureButton" parent="PauseScreen"]
+margin_left = 112.0
+margin_top = 64.0
+margin_right = 144.0
+margin_bottom = 96.0
+action_mode = 0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="TextureButton" parent="PauseScreen"]
+margin_left = 144.0
+margin_top = 64.0
+margin_right = 176.0
+margin_bottom = 96.0
+action_mode = 0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsScreen" type="TextureRect" parent="."]
+margin_right = 256.0
+margin_bottom = 128.0
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="HSlider" type="HSlider" parent="OptionsScreen"]
+margin_left = 128.0
+margin_top = 56.0
+margin_right = 176.0
+margin_bottom = 72.0
+min_value = -10.0
+max_value = 10.0
+
+[node name="ReturnButton" type="TextureButton" parent="OptionsScreen"]
+margin_left = 112.0
+margin_top = 80.0
+margin_right = 144.0
+margin_bottom = 112.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+
+[connection signal="pressed" from="PauseScreen/UnpauseButton" to="." method="_on_UnpauseButton_pressed"]
+[connection signal="pressed" from="PauseScreen/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="PauseScreen/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="value_changed" from="OptionsScreen/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="OptionsScreen/ReturnButton" to="." method="_on_ReturnButton_pressed"]

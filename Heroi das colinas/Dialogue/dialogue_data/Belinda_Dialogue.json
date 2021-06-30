@@ -1,0 +1,5 @@
+{
+    "001" : {"name":"Belinda", "expression": "neutral", "text": "Olá, seja bem vindo à Metais do Baixote, Forja e Armazém..."},
+    "002" : {"name":"Belinda", "expression": "neutral", "text": "meu nome é Belinda, e adoraria te vender itens..."},
+    "003" : {"name":"Belinda", "expression": "neutral", "text": "mas infelizmente esta função ainda não foi implementada."}
+}
